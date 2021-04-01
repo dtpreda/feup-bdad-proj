@@ -10,30 +10,31 @@ CREATE TABLE Hospital(
 );
 
 CREATE TABLE Unit(
-    name TEXT,
+    name TEXT , --TODO--
     hospital TEXT REFERENCES Hospital,
     openingDate INTEGER,
-    phone INTEGER,
+    phone INTEGER CONSTRAINT PhoneRange CHECK(99999999<phone and phone<1000000000),
     head TEXT REFERENCES HealthProfessional, 
     PRIMARY KEY(name, hospital)
 );
 
 CREATE TABLE Person(
-    cc INTEGER PRIMARY KEY,
+    cc INTEGER PRIMARY KEY CONSTRAINT ccRange CHECK(9999999 < cc and cc < 100000000),
     name TEXT,
     birthDate INTEGER
 );
 
 CREATE TABLE Patient( 
-    cc INTEGER PRIMARY KEY REFERENCES Person,
+    cc INTEGER PRIMARY KEY REFERENCES Person CONSTRAINT ccRange CHECK(9999999 < cc and cc < 100000000),
     insuranceName TEXT,
-    healthUserNumber INTEGER
+    healthUserNumber INTEGER CONSTRAINT healthUserNumber CHECK(99999999 < healthUserNumber and healthUserNumber < 1000000000)
 );
 
 CREATE TABLE HealthProfessional(
-    cc INTEGER PRIMARY KEY REFERENCES Person,
-    baseSalary INTEGER,
-    extraSalary INTEGER
+    cc INTEGER PRIMARY KEY REFERENCES Person CONSTRAINT ccRange CHECK(9999999 < cc and cc < 100000000),
+    yearsOfService INTEGER CONSTRAINT yearsOfServiceRange CHECK(yearsOfService >= 0),
+    baseSalary INTEGER CONSTRAINT baseSalaryRange CHECK(baseSalary >= 665),
+    extraSalary INTEGER --TODO--
 );
 
 CREATE TABLE WorksAt(
@@ -52,7 +53,7 @@ CREATE TABLE Ocurrence(
     outcome TEXT,
     unit TEXT REFERENCES Unit(name),
     patient INTEGER REFERENCES Patient,
-    followUp INTEGER REFERENCES Ocurrence
+    followUp INTEGER REFERENCES Ocurrence CONSTRAINT followUpCheck CHECK(id != followUp)
 );
 
 CREATE TABLE Participated(
@@ -63,14 +64,14 @@ CREATE TABLE Participated(
 
 CREATE TABLE Condition (
     name TEXT PRIMARY KEY,
-    gravity TEXT
+    gravity TEXT CONSTRAINT gravityValues CHECK(gravity = "high" or gravity = "medium" or gravity = "low")
 );
 
 CREATE TABLE Prescription (
-    patientCC INTEGER REFERENCES Patient,
+    patientCC INTEGER REFERENCES Patient CONSTRAINT ccRange CHECK(9999999 < patientCC and patientCC < 100000000),
     condition TEXT REFERENCES Condition,
     name TEXT,
-    quantity INTEGER,
+    quantity INTEGER CONSTRAINT quantityRange CHECK(quantity > 0),
     PRIMARY KEY (patientCC, condition)
 );
 
