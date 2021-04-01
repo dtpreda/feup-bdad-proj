@@ -18,11 +18,7 @@ DROP TABLE IF EXISTS Hospital;
 
 CREATE TABLE Hospital (
 	name TEXT PRIMARY KEY NOT NULL,
-<<<<<<< HEAD
     region TEXT CONSTRAINT regionValues CHECK(region = 'Norte' or region = 'Centro' or region = 'Lisboa e Vale do Tejo' or region = 'Alentejo' or region = 'Algarve' or region = 'Açores' or region = 'Madeira'),
-=======
-    region TEXT CONSTRAINT regionValues CHECK(region = 'Norte' OR region = 'Centro' OR region = 'Lisboa e Vale do Tejo' OR region = 'Alentejo' OR region = 'Algarve' OR region = 'Açores' OR region = 'Madeira'),
->>>>>>> 3b20e58f17de0fe1764a884a3bfe86dae6fef44a
     openingDate INTEGER,
     address TEXT UNIQUE NOT NULL
 );
@@ -82,11 +78,7 @@ CREATE TABLE Participated (
 
 CREATE TABLE Condition (
     name TEXT PRIMARY KEY,
-<<<<<<< HEAD
     gravity TEXT CONSTRAINT gravityValues CHECK(gravity = 'high' or gravity = 'medium' or gravity = 'low')
-=======
-    gravity TEXT CONSTRAINT gravityValues CHECK(gravity = 'high' OR gravity = 'medium' OR gravity = 'low')
->>>>>>> 3b20e58f17de0fe1764a884a3bfe86dae6fef44a
 );
 
 CREATE TABLE Prescription (
@@ -99,11 +91,7 @@ CREATE TABLE Prescription (
 
 CREATE TABLE Doctor ( --TODO ON DELETE CASCADE or SET NULL--
     healthProfessionalCC INTEGER PRIMARY KEY REFERENCES HealthProfessional ON DELETE CASCADE ON UPDATE CASCADE CONSTRAINT healthProfessionalCCRange CHECK (9999999 < healthProfessionalCC and healthProfessionalCC < 100000000) NOT NULL,
-<<<<<<< HEAD
     type TEXT CONSTRAINT DoctorType CHECK (type = 'intern' or type = 'resident' or type = 'attending') DEFAULT 'intern' NOT NULL,
-=======
-    type TEXT CONSTRAINT DoctorType CHECK (type = 'intern' OR type = 'resident' OR type = 'attending') DEFAULT 'intern' NOT NULL,
->>>>>>> 3b20e58f17de0fe1764a884a3bfe86dae6fef44a
     specialty TEXT REFERENCES Specialty ON DELETE SET NULL ON UPDATE CASCADE DEFAULT NULL--TODO CONSTRAINT
 );
 
