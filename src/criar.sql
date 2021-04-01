@@ -25,10 +25,10 @@ CREATE TABLE Hospital(
 
 CREATE TABLE Unit(
     name TEXT , --TODO--
-    hospital TEXT REFERENCES Hospital,
+    hospital TEXT REFERENCES Hospital ON DELETE CASCADE ON UPDATE CASCADE,
     openingDate INTEGER,
     phone INTEGER CONSTRAINT PhoneRange CHECK(99999999<phone and phone<1000000000),
-    head TEXT REFERENCES HealthProfessional, 
+    head TEXT REFERENCES HealthProfessional ON DELETE SET NULL ON UPDATE CASCADE, 
     PRIMARY KEY(name, hospital)
 );
 
@@ -39,24 +39,24 @@ CREATE TABLE Person(
 );
 
 CREATE TABLE Patient( 
-    cc INTEGER PRIMARY KEY REFERENCES Person CONSTRAINT ccRange CHECK(9999999 < cc and cc < 100000000),
+    cc INTEGER PRIMARY KEY REFERENCES Person ON DELETE CASCADE ON UPDATE CASCADE CONSTRAINT ccRange CHECK(9999999 < cc and cc < 100000000), --TODO ON DELETE CASCADE or SET NULL--
     insuranceName TEXT,
     healthUserNumber INTEGER CONSTRAINT healthUserNumber CHECK(99999999 < healthUserNumber and healthUserNumber < 1000000000)
 );
 
 CREATE TABLE HealthProfessional(
-    cc INTEGER PRIMARY KEY REFERENCES Person CONSTRAINT ccRange CHECK(9999999 < cc and cc < 100000000),
+    cc INTEGER PRIMARY KEY REFERENCES Person ON DELETE CASCADE ON UPDATE CASCADE CONSTRAINT ccRange CHECK(9999999 < cc and cc < 100000000), --TODO ON DELETE CASCADE or SET NULL--
     yearsOfService INTEGER CONSTRAINT yearsOfServiceRange CHECK(yearsOfService >= 0),
     baseSalary INTEGER CONSTRAINT baseSalaryRange CHECK(baseSalary >= 665),
     extraSalary INTEGER --TODO--
 );
 
 CREATE TABLE WorksAt(
-    healthProfessional TEXT REFERENCES HealthProfessional,
+    healthProfessional INTEGER REFERENCES HealthProfessional ON DELETE CASCADE ON UPDATE CASCADE,
     unitName TEXT,
     hospitalName TEXT,
     PRIMARY KEY(healthProfessional, unitName, hospitalName),
-    FOREIGN KEY (unitName, hospitalName) REFERENCES Unit
+    FOREIGN KEY (unitName, hospitalName) REFERENCES Unit ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Ocurrence(
@@ -65,14 +65,14 @@ CREATE TABLE Ocurrence(
     date INTEGER,
     gravity TEXT,
     outcome TEXT,
-    unit TEXT REFERENCES Unit(name),
-    patient INTEGER REFERENCES Patient,
-    followUp INTEGER REFERENCES Ocurrence CONSTRAINT followUpCheck CHECK(id != followUp)
+    unit TEXT REFERENCES Unit(name) ON DELETE SET NULL ON UPDATE CASCADE,
+    patient INTEGER REFERENCES Patient ON DELETE SET NULL ON UPDATE CASCADE,
+    followUp INTEGER REFERENCES Ocurrence ON DELETE SET NULL ON UPDATE CASCADE CONSTRAINT followUpCheck CHECK(id != followUp) 
 );
 
 CREATE TABLE Participated(
-    ocurrence INTEGER REFERENCES Ocurrence,
-    healthProfessional INTEGER REFERENCES HealthProfessional,
+    ocurrence INTEGER REFERENCES Ocurrence ON DELETE SET NULL ON UPDATE CASCADE,
+    healthProfessional INTEGER REFERENCES HealthProfessional ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (ocurrence, healthProfessional)
 );
 
@@ -82,22 +82,22 @@ CREATE TABLE Condition (
 );
 
 CREATE TABLE Prescription (
-    patientCC INTEGER REFERENCES Patient CONSTRAINT ccRange CHECK(9999999 < patientCC and patientCC < 100000000),
-    condition TEXT REFERENCES Condition,
+    patientCC INTEGER REFERENCES Patient ON DELETE CASCADE ON UPDATE CASCADE CONSTRAINT ccRange CHECK(9999999 < patientCC and patientCC < 100000000),
+    condition TEXT REFERENCES Condition ON DELETE CASCADE ON UPDATE CASCADE,
     name TEXT,
     quantity INTEGER CONSTRAINT quantityRange CHECK(quantity > 0),
     PRIMARY KEY (patientCC, condition)
 );
 
-CREATE TABLE Doctor (
-    healthProfessionalCC INTEGER PRIMARY KEY REFERENCES HealthProfessional CONSTRAINT healthProfessionalCCRange CHECK (9999999 < healthProfessionalCC and healthProfessionalCC < 100000000),
+CREATE TABLE Doctor ( --TODO ON DELETE CASCADE or SET NULL--
+    healthProfessionalCC INTEGER PRIMARY KEY REFERENCES HealthProfessional ON DELETE CASCADE ON UPDATE CASCADE CONSTRAINT healthProfessionalCCRange CHECK (9999999 < healthProfessionalCC and healthProfessionalCC < 100000000),
     type TEXT CONSTRAINT DoctorType CHECK (type = "intern" or type = "resident" or type = "attending"),
-    specialty TEXT REFERENCES Specialty --TODO CONSTRAINT
+    specialty TEXT REFERENCES Specialty ON DELETE SET NULL ON UPDATE CASCADE --TODO CONSTRAINT
 );
 
-CREATE TABLE Nurse (
-    healthProfessionalCC INTEGER PRIMARY KEY REFERENCES HealthProfessional CONSTRAINT healthProfessionalCCRange CHECK (9999999 < healthProfessionalCC and healthProfessionalCC < 100000000),
-    specialty TEXT REFERENCES Specialty --TODO CONSTRAINT
+CREATE TABLE Nurse ( --TODO ON DELETE CASCADE or SET NULL--
+    healthProfessionalCC INTEGER PRIMARY KEY REFERENCES HealthProfessional ON DELETE CASCADE ON UPDATE CASCADE CONSTRAINT healthProfessionalCCRange CHECK (9999999 < healthProfessionalCC and healthProfessionalCC < 100000000),
+    specialty TEXT REFERENCES Specialty ON DELETE SET NULL ON UPDATE CASCADE --TODO CONSTRAINT
 );
 
 CREATE TABLE Specialty(
