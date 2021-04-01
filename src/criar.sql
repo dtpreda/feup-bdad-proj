@@ -2,6 +2,20 @@ PRAGMA foreign_keys=ON;
 .mode columns
 .headers on
 
+DROP TABLE IF EXISTS Prescription;
+DROP TABLE IF EXISTS Condition;
+DROP TABLE IF EXISTS Participated;
+DROP TABLE IF EXISTS Ocurrence;
+DROP TABLE IF EXISTS WorksAt;
+DROP TABLE IF EXISTS Doctor;
+DROP TABLE IF EXISTS Nurse;
+DROP TABLE IF EXISTS Specialty;
+DROP TABLE IF EXISTS Unit;
+DROP TABLE IF EXISTS HealthProfessional;
+DROP TABLE IF EXISTS Patient;
+DROP TABLE IF EXISTS Person;
+DROP TABLE IF EXISTS Hospital;
+
 CREATE TABLE Hospital(
 	name TEXT PRIMARY KEY,
     region TEXT,
