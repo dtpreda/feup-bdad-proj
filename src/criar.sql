@@ -24,47 +24,55 @@ CREATE TABLE Hospital (
 );
 
 CREATE TABLE Unit (
-    name TEXT NOT NULL, --TODO--
+    name TEXT CONSTRAINT speciality CHECK(name = 'Cardiology' OR name = 'Pediatry' OR name = 'Neurology' OR name = 'Obstretics' OR name = 'Urgencies' OR name = 'Intensive Care' OR name = 'Radiology' OR name = 'Oncology' OR name = 'General Medicine' OR name = 'Allergology' OR name = 'Internment' OR name = 'Dermatology' OR name = 'Urology' OR name = 'Gynecology' OR name = 'Psychiatry') NOT NULL, 
     hospital TEXT REFERENCES Hospital ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
-    openingDate INTEGER,
+    openingDate INTEGER, --TODO Date restriction
     phone INTEGER UNIQUE CONSTRAINT PhoneRange CHECK(99999999 < phone AND phone < 1000000000) NOT NULL,
-    head TEXT UNIQUE REFERENCES HealthProfessional ON DELETE SET NULL ON UPDATE CASCADE, --TODO Decidir ON DELETE 
+    head TEXT UNIQUE REFERENCES HealthProfessional ON DELETE SET NULL ON UPDATE CASCADE, 
     PRIMARY KEY(name, hospital)
 );
 
 CREATE TABLE Person (
     cc INTEGER PRIMARY KEY CONSTRAINT ccRange CHECK(9999999 < cc AND cc < 100000000) NOT NULL,
     name TEXT NOT NULL,
-    birthDate INTEGER NOT NULL
+    birthDate INTEGER NOT NULL --TODO Date restriction
 );
 
 CREATE TABLE Patient ( 
-    cc INTEGER PRIMARY KEY REFERENCES Person ON DELETE CASCADE ON UPDATE CASCADE CONSTRAINT ccRange CHECK(9999999 < cc AND cc < 100000000) NOT NULL, --TODO ON DELETE CASCADE or SET NULL--
+    cc INTEGER PRIMARY KEY REFERENCES Person ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     insuranceName TEXT DEFAULT 'No insurance',
     healthUserNumber INTEGER UNIQUE CONSTRAINT healthUserNumber CHECK(99999999 < healthUserNumber AND healthUserNumber < 1000000000) NOT NULL
 );
 
 CREATE TABLE HealthProfessional (
-    cc INTEGER PRIMARY KEY REFERENCES Person ON DELETE CASCADE ON UPDATE CASCADE CONSTRAINT ccRange CHECK(9999999 < cc AND cc < 100000000) NOT NULL, --TODO ON DELETE CASCADE or SET NULL--
+    cc INTEGER PRIMARY KEY REFERENCES Person ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     yearsOfService INTEGER CONSTRAINT yearsOfServiceRange CHECK(yearsOfService >= 0) DEFAULT 0 NOT NULL,
     baseSalary INTEGER CONSTRAINT baseSalaryRange CHECK(baseSalary >= 665) DEFAULT 665 NOT NULL,
     extraSalary INTEGER DEFAULT NULL
+);
+
+CREATE TABLE EmployedAt (
+    healthProfessional INTEGER REFERENCES HealthProfessional ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+    hospitalName TEXT REFERENCES Hospital ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+    id INTEGER,
+    PRIMARY KEY(healthProfessional, hospitalName),
+    UNIQUE(hospitalName, id)
 );
 
 CREATE TABLE WorksAt (
     healthProfessional INTEGER REFERENCES HealthProfessional ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     unitName TEXT NOT NULL,
     hospitalName TEXT NOT NULL,
-    PRIMARY KEY(healthProfessional, unitName, hospitalName),
+    PRIMARY KEY (healthProfessional, unitName, hospitalName),
     FOREIGN KEY (unitName, hospitalName) REFERENCES Unit ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Ocurrence (
     id INTEGER PRIMARY KEY NOT NULL,
-    type TEXT, --TODO Aplicar constraint -> indicado no UML
-    date INTEGER,
-    gravity TEXT, --TODO Aplicar constraint -> indicado no UML
-    outcome TEXT, --TODO Vale a pena adicionar constraint??
+    type TEXT CONSTRAINT typeOfOccurrence (type = 'appointment' OR type = 'surgery' OR type = 'emergency' OR type = 'analysis' OR type = 'exam' OR type = 'therapy'), 
+    date INTEGER, --TODO Date restriction
+    gravity TEXT gravityValues CHECK(gravity = 'high' OR gravity = 'medium' OR gravity = 'low'), 
+    outcome TEXT,
     unit TEXT REFERENCES Unit(name) ON DELETE SET NULL ON UPDATE CASCADE,
     patient INTEGER REFERENCES Patient ON DELETE SET NULL ON UPDATE CASCADE,
     followUp INTEGER UNIQUE REFERENCES Ocurrence ON DELETE SET NULL ON UPDATE CASCADE CONSTRAINT followUpCheck CHECK(id != followUp) 
@@ -82,29 +90,25 @@ CREATE TABLE Condition (
 );
 
 CREATE TABLE Prescription (
-    patientCC INTEGER REFERENCES Patient ON DELETE CASCADE ON UPDATE CASCADE CONSTRAINT ccRange CHECK(9999999 < patientCC AND patientCC < 100000000) NOT NULL,
+    patientCC INTEGER REFERENCES Patient ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     condition TEXT REFERENCES Condition ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     name TEXT NOT NULL,
     quantity INTEGER CONSTRAINT quantityRange CHECK(quantity > 0) DEFAULT 1 NOT NULL ,
     PRIMARY KEY (patientCC, condition)
 );
 
-CREATE TABLE Doctor ( --TODO ON DELETE CASCADE or SET NULL--
-    healthProfessionalCC INTEGER PRIMARY KEY REFERENCES HealthProfessional ON DELETE CASCADE ON UPDATE CASCADE CONSTRAINT healthProfessionalCCRange CHECK (9999999 < healthProfessionalCC and healthProfessionalCC < 100000000) NOT NULL,
+CREATE TABLE Doctor (
+    healthProfessionalCC INTEGER PRIMARY KEY REFERENCES HealthProfessional ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     type TEXT CONSTRAINT DoctorType CHECK (type = 'intern' OR type = 'resident' OR type = 'attending') DEFAULT 'intern' NOT NULL,
-    specialty TEXT REFERENCES Specialty ON DELETE SET NULL ON UPDATE CASCADE DEFAULT NULL--TODO CONSTRAINT
+    specialty TEXT REFERENCES Specialty ON DELETE SET NULL ON UPDATE CASCADE DEFAULT NULL
 );
 
-CREATE TABLE Nurse ( --TODO ON DELETE CASCADE or SET NULL--
-    healthProfessionalCC INTEGER PRIMARY KEY REFERENCES HealthProfessional ON DELETE CASCADE ON UPDATE CASCADE CONSTRAINT healthProfessionalCCRange CHECK (9999999 < healthProfessionalCC and healthProfessionalCC < 100000000) NOT NULL,
-    specialty TEXT REFERENCES Specialty ON DELETE SET NULL ON UPDATE CASCADE DEFAULT NULL--TODO CONSTRAINT
+CREATE TABLE Nurse (
+    healthProfessionalCC INTEGER PRIMARY KEY REFERENCES HealthProfessional ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+    specialty TEXT REFERENCES Specialty ON DELETE SET NULL ON UPDATE CASCADE DEFAULT NULL
 );
 
 CREATE TABLE Specialty (
-    name TEXT PRIMARY KEY, --TODO CONSTRAINT
+    name TEXT PRIMARY KEY CONSTRAINT speciality CHECK(name = 'Cardiology' OR name = 'Pediatry' OR name = 'Neurology' OR name = 'Obstretics' OR name = 'Urgencies' OR name = 'Intensive Care' OR name = 'Radiology' OR name = 'Oncology' OR name = 'General Medicine' OR name = 'Allergology' OR name = 'Internment' OR name = 'Dermatology' OR name = 'Urology' OR name = 'Gynecology' OR name = 'Psychiatry') NOT NULL,
     extraSalarayPerYear INTEGER CONSTRAINT PositiveExtraSalaray CHECK (extraSalarayPerYear > 0) DEFAULT 1
 );
-
--- ASK:
--- As constraints de referencias têm que ser repetidas? Ou basta por na "base"?
---
