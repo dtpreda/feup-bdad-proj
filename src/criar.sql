@@ -4,7 +4,7 @@ PRAGMA foreign_keys=ON;
 
 CREATE TABLE Hospital(
 	name TEXT PRIMARY KEY,
-    region TEXT,
+    region TEXT CONSTRAINT regionValues CHECK(region = "Norte" or region = "Centro" or region = "Lisboa e Vale do Tejo" or region = "Alentejo" or region = "Algarve" or region = "Açores" or region = "Madeira"),
     openingDate INTEGER,
     address TEXT
 );
