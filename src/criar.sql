@@ -75,17 +75,21 @@ CREATE TABLE Prescription (
 );
 
 CREATE TABLE Doctor (
-    healthProfessionalCC INTEGER PRIMARY KEY REFERENCES HealthProfessional,
-    type TEXT,
-    specialty TEXT REFERENCES Specialty
+    healthProfessionalCC INTEGER PRIMARY KEY REFERENCES HealthProfessional CONSTRAINT healthProfessionalCCRange CHECK (9999999 < healthProfessionalCC and healthProfessionalCC < 100000000),
+    type TEXT CONSTRAINT DoctorType CHECK (type = "intern" or type = "resident" or type = "attending"),
+    specialty TEXT REFERENCES Specialty --TODO CONSTRAINT
 );
 
 CREATE TABLE Nurse (
-    healthProfessionalCC INTEGER PRIMARY KEY REFERENCES HealthProfessional,
-    specialty TEXT REFERENCES Specialty
+    healthProfessionalCC INTEGER PRIMARY KEY REFERENCES HealthProfessional CONSTRAINT healthProfessionalCCRange CHECK (9999999 < healthProfessionalCC and healthProfessionalCC < 100000000),
+    specialty TEXT REFERENCES Specialty --TODO CONSTRAINT
 );
 
 CREATE TABLE Specialty(
-    name TEXT PRIMARY KEY,
-    extraSalarayPerYear INTEGER
+    name TEXT PRIMARY KEY, --TODO CONSTRAINT
+    extraSalarayPerYear INTEGER CONSTRAINT PositiveExtraSalaray CHECK (extraSalarayPerYear > 0)
 );
+
+-- ASK:
+-- As constraints de referencias têm que ser repetidas? Ou basta por na "base"?
+--
