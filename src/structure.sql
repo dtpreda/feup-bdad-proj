@@ -1,4 +1,4 @@
-PRAGMA foreign_keys=on;
+PRAGMA foreign_keys=ON;
 .mode columns
 .headers on
 
@@ -42,45 +42,47 @@ CREATE TABLE WorksAt(
 );
 
 CREATE TABLE Ocurrence(
-    id INTEGER,
+    id INTEGER PRIMARY KEY,
     type TEXT,
     date INTEGER,
     gravity TEXT,
     outcome TEXT,
-    unit TEXT,
-    patient INTEGER,
-    followUp INTEGER
+    unit TEXT REFERENCES Unit(name),
+    patient INTEGER REFERENCES Patient,
+    followUp INTEGER REFERENCES Ocurrence
 );
 
 CREATE TABLE Participated(
-    ocurrence INTEGER,
-    healthPROfessional INTEGER
+    ocurrence INTEGER REFERENCES Ocurrence,
+    healthProfessional INTEGER REFERENCES HealthProfessional,
+    PRIMARY KEY (ocurrence, healthProfessional)
 );
 
-CREAT TABLE Condition (
-    name TEXT,
+CREATE TABLE Condition (
+    name TEXT PRIMARY KEY,
     gravity TEXT
 );
 
-CREAT TABLE Prescription (
-    patientCC INTEGER,
-    condition TEXT,
+CREATE TABLE Prescription (
+    patientCC INTEGER REFERENCES Patient,
+    condition TEXT REFERENCES Condition,
     name TEXT,
-    quantity INTEGER
+    quantity INTEGER,
+    PRIMARY KEY (patientCC, condition)
 );
 
-CREAT TABLE Doctor (
-    healthProfessionalCC INTEGER,
+CREATE TABLE Doctor (
+    healthProfessionalCC INTEGER PRIMARY KEY REFERENCES HealthProfessional,
     type TEXT,
-    specialty TEXT
+    specialty TEXT REFERENCES Specialty
 );
 
-CREAT TABLE Nurse (
-    healthProfessionalCC INTEGER,
-    specialty TEXT
+CREATE TABLE Nurse (
+    healthProfessionalCC INTEGER PRIMARY KEY REFERENCES HealthProfessional,
+    specialty TEXT REFERENCES Specialty
 );
 
 CREATE TABLE Specialty(
-    name TEXT,
+    name TEXT PRIMARY KEY,
     extraSalarayPerYear INTEGER
 );
