@@ -1,9 +1,9 @@
-PRAGMA foreign_keys=on;
+PRAGMA foreign_keys = ON;
 .mode columns
 .headers on
 
 CREATE TABLE Hospital(
-	name TEXT,
+	name TEXT PRIMARY KEY,
     region TEXT,
     openingDate INTEGER,
     address TEXT
@@ -11,34 +11,37 @@ CREATE TABLE Hospital(
 
 CREATE TABLE Unit(
     name TEXT,
-    hospital TEXT,
+    hospital TEXT REFERENCES Hospital,
     openingDate INTEGER,
     phone INTEGER,
-    head TEXT
+    head TEXT REFERENCES HealthProfessional, 
+    PRIMARY KEY(name, hospital)
 );
 
 CREATE TABLE Person(
-    cc INTEGER,
+    cc INTEGER PRIMARY KEY,
     name TEXT,
     birthDate INTEGER
 );
 
 CREATE TABLE Patient( 
-    cc INTEGER,
+    cc INTEGER PRIMARY KEY REFERENCES Person,
     insuranceName TEXT,
     healthUserNumber INTEGER
 );
 
 CREATE TABLE HealthProfessional(
-    cc INTEGER,
+    cc INTEGER PRIMARY KEY REFERENCES Person,
     baseSalary INTEGER,
     extraSalary INTEGER
 );
 
 CREATE TABLE WorksAt(
-    healthProfessional TEXT,
+    healthProfessional TEXT REFERENCES HealthProfessional,
     unitName TEXT,
-    hospitalName TEXT
+    hospitalName TEXT,
+    PRIMARY KEY(healthProfessional, unitName, hospitalName),
+    FOREIGN KEY (unitName, hospitalName) REFERENCES Unit
 );
 
 CREATE TABLE Ocurrence(
@@ -57,25 +60,25 @@ CREATE TABLE Participated(
     healthPROfessional INTEGER
 );
 
-CREAT TABLE Condition (
+CREATE TABLE Condition (
     name TEXT,
     gravity TEXT
 );
 
-CREAT TABLE Prescription (
+CREATE TABLE Prescription (
     patientCC INTEGER,
     condition TEXT,
     name TEXT,
     quantity INTEGER
 );
 
-CREAT TABLE Doctor (
+CREATE TABLE Doctor (
     healthProfessionalCC INTEGER,
     type TEXT,
     specialty TEXT
 );
 
-CREAT TABLE Nurse (
+CREATE TABLE Nurse (
     healthProfessionalCC INTEGER,
     specialty TEXT
 );
