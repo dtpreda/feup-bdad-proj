@@ -110,5 +110,5 @@ CREATE TABLE Nurse (
 
 CREATE TABLE Specialty (
     name TEXT PRIMARY KEY CONSTRAINT speciality CHECK(name = 'Cardiology' OR name = 'Pediatry' OR name = 'Neurology' OR name = 'Obstretics' OR name = 'Urgencies' OR name = 'Intensive Care' OR name = 'Radiology' OR name = 'Oncology' OR name = 'General Medicine' OR name = 'Allergology' OR name = 'Internment' OR name = 'Dermatology' OR name = 'Urology' OR name = 'Gynecology' OR name = 'Psychiatry') NOT NULL,
-    extraSalarayPerYear INTEGER CONSTRAINT PositiveExtraSalaray CHECK(extraSalarayPerYear > 0) DEFAULT 1
+    extraSalaryPerYear INTEGER CONSTRAINT PositiveExtraSalaray CHECK(extraSalaryPerYear > 0) DEFAULT 1
 );
