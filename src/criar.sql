@@ -20,14 +20,14 @@ DROP TABLE IF EXISTS Hospital;
 CREATE TABLE Hospital (
 	name TEXT PRIMARY KEY NOT NULL,
     region TEXT CONSTRAINT regionValues CHECK(region = 'Norte' OR region = 'Centro' OR region = 'Lisboa e Vale do Tejo' OR region = 'Alentejo' OR region = 'Algarve' OR region = 'Açores' OR region = 'Madeira'),
-    openingDate INTEGER,
+    openingDate INTEGER CONSTRAINT beforeNow CHECK(strftime('%Y-%m-%d %H:%M:%S', openingDate) < strftime('%Y-%m-%d %H:%M:%S')),
     address TEXT UNIQUE NOT NULL
 );
 
 CREATE TABLE Unit (
     name TEXT CONSTRAINT speciality CHECK(name = 'Cardiology' OR name = 'Pediatry' OR name = 'Neurology' OR name = 'Obstretics' OR name = 'Urgencies' OR name = 'Intensive Care' OR name = 'Radiology' OR name = 'Oncology' OR name = 'General Medicine' OR name = 'Allergology' OR name = 'Internment' OR name = 'Dermatology' OR name = 'Urology' OR name = 'Gynecology' OR name = 'Psychiatry') NOT NULL, 
     hospital TEXT REFERENCES Hospital ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
-    openingDate INTEGER, --TODO Date restriction
+    openingDate INTEGER CONSTRAINT beforeNow CHECK(strftime('%Y-%m-%d %H:%M:%S', openingDate) < strftime('%Y-%m-%d %H:%M:%S')),
     phone INTEGER UNIQUE CONSTRAINT PhoneRange CHECK(99999999 < phone AND phone < 1000000000) NOT NULL,
     head TEXT UNIQUE REFERENCES HealthProfessional ON DELETE SET NULL ON UPDATE CASCADE, 
     PRIMARY KEY(name, hospital)
@@ -36,7 +36,7 @@ CREATE TABLE Unit (
 CREATE TABLE Person (
     cc INTEGER PRIMARY KEY CONSTRAINT ccRange CHECK(9999999 < cc AND cc < 100000000) NOT NULL,
     name TEXT NOT NULL,
-    birthDate INTEGER NOT NULL --TODO Date restriction
+    birthDate INTEGER NOT NULL CONSTRAINT beforeNow CHECK(strftime('%Y-%m-%d %H:%M:%S', birthDate) < strftime('%Y-%m-%d %H:%M:%S'))
 );
 
 CREATE TABLE Patient ( 
@@ -67,11 +67,11 @@ CREATE TABLE WorksAt (
     PRIMARY KEY (healthProfessional, unitName, hospitalName),
     FOREIGN KEY (unitName, hospitalName) REFERENCES Unit ON DELETE CASCADE ON UPDATE CASCADE
 );
-
+    
 CREATE TABLE Ocurrence (
     id INTEGER PRIMARY KEY NOT NULL,
     type TEXT CONSTRAINT typeOfOccurrence CHECK(type = 'appointment' OR type = 'surgery' OR type = 'emergency' OR type = 'analysis' OR type = 'exam' OR type = 'therapy'),
-    date INTEGER, --TODO Date restriction
+    date INTEGER CONSTRAINT beforeNow CHECK(strftime('%Y-%m-%d %H:%M:%S', date) < strftime('%Y-%m-%d %H:%M:%S')), 
     gravity TEXT CONSTRAINT gravityValues CHECK(gravity = 'high' OR gravity = 'medium' OR gravity = 'low'), 
     outcome TEXT,
     unit TEXT REFERENCES Unit(name) ON DELETE SET NULL ON UPDATE CASCADE,
