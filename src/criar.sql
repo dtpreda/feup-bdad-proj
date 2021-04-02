@@ -48,8 +48,7 @@ CREATE TABLE Patient (
 CREATE TABLE HealthProfessional (
     cc INTEGER PRIMARY KEY REFERENCES Person ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     yearsOfService INTEGER CONSTRAINT yearsOfServiceRange CHECK(yearsOfService >= 0) DEFAULT 0 NOT NULL,
-    baseSalary INTEGER CONSTRAINT baseSalaryRange CHECK(baseSalary >= 665) DEFAULT 665 NOT NULL,
-    extraSalary INTEGER DEFAULT NULL
+    baseSalary INTEGER CONSTRAINT baseSalaryRange CHECK(baseSalary >= 665) DEFAULT 665 NOT NULL
 );
 
 CREATE TABLE EmployedAt (
