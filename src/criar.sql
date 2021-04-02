@@ -69,13 +69,13 @@ CREATE TABLE WorksAt (
 
 CREATE TABLE Ocurrence (
     id INTEGER PRIMARY KEY NOT NULL,
-    type TEXT CONSTRAINT typeOfOccurrence (type = 'appointment' OR type = 'surgery' OR type = 'emergency' OR type = 'analysis' OR type = 'exam' OR type = 'therapy'), 
+    type TEXT CONSTRAINT typeOfOccurrence CHECK(type = 'appointment' OR type = 'surgery' OR type = 'emergency' OR type = 'analysis' OR type = 'exam' OR type = 'therapy'),
     date INTEGER, --TODO Date restriction
-    gravity TEXT gravityValues CHECK(gravity = 'high' OR gravity = 'medium' OR gravity = 'low'), 
+    gravity TEXT CONSTRAINT gravityValues CHECK(gravity = 'high' OR gravity = 'medium' OR gravity = 'low'), 
     outcome TEXT,
     unit TEXT REFERENCES Unit(name) ON DELETE SET NULL ON UPDATE CASCADE,
     patient INTEGER REFERENCES Patient ON DELETE SET NULL ON UPDATE CASCADE,
-    followUp INTEGER UNIQUE REFERENCES Ocurrence ON DELETE SET NULL ON UPDATE CASCADE CONSTRAINT followUpCheck CHECK(id != followUp) 
+    followUp INTEGER UNIQUE REFERENCES Ocurrence ON DELETE SET NULL ON UPDATE CASCADE CONSTRAINT followUpCheck CHECK(id != followUp)
 );
 
 CREATE TABLE Participated (
