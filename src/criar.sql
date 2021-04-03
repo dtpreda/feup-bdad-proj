@@ -68,14 +68,16 @@ CREATE TABLE WorksAt (
 );
 
 CREATE TABLE Ocurrence (
-    id INTEGER PRIMARY KEY NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     type TEXT CONSTRAINT typeOfOccurrence CHECK(type = 'appointment' OR type = 'surgery' OR type = 'emergency' OR type = 'analysis' OR type = 'exam' OR type = 'therapy') NOT NULL,
     date INTEGER CONSTRAINT beforeNow CHECK(strftime('%Y-%m-%d %H:%M:%S', date) < strftime()) NOT NULL, 
     gravity TEXT CONSTRAINT gravityValues CHECK(gravity = 'high' OR gravity = 'medium' OR gravity = 'low') NOT NULL, 
     outcome TEXT,
-    unit TEXT REFERENCES Unit(name) ON DELETE SET NULL ON UPDATE CASCADE,
+    unit TEXT,
+    hospital TEXT,
     patient INTEGER REFERENCES Patient ON DELETE SET NULL ON UPDATE CASCADE,
-    followUp INTEGER UNIQUE REFERENCES Ocurrence ON DELETE SET NULL ON UPDATE CASCADE CONSTRAINT followUpCheck CHECK((id = NULL) OR id != followUp) DEFAULT NULL
+    followUp INTEGER UNIQUE REFERENCES Ocurrence ON DELETE SET NULL ON UPDATE CASCADE CONSTRAINT followUpCheck CHECK((id = NULL) OR id != followUp) DEFAULT NULL,
+    FOREIGN KEY (unit, hospital)  REFERENCES Unit ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 CREATE TABLE Participated (
