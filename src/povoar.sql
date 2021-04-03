@@ -445,9 +445,9 @@ insert into WorksAt (healthProfessional, unitName, hospitalName) values (9297188
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (17791057, 'Internment', 'Deckow-Jenkins');
 
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('appointment', '2021-03-18 09:23:29', 'low', 'Success', 'Radiology', 'Schiller-Maggio', 20289661);
-insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('therapy', '2021-03-24 05:16:14', 'medium', 'Cured', 'Urgencies', 'Schiller-Maggio', 53212792);
-insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('analysis', '2021-04-01 06:50:55', 'low','Inconclusive', 'Cardiology', 'Schiller-Maggio', 57952589);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('appointment', '2021-03-23 01:37:16', 'medium', 'Success', 'Intensive Care', 'Schiller-Maggio', 53212792);
+insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('analysis', '2021-04-01 06:50:55', 'low','Inconclusive', 'Cardiology', 'Schiller-Maggio', 57952589);
+insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('therapy', '2021-03-24 05:16:14', 'medium', 'Cured', 'Urgencies', 'Schiller-Maggio', 53212792);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('emergency', '2021-02-24 15:18:21', 'high', 'Success', 'Cardiology', 'Nader-Ryan', 20289661);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('analysis', '2021-03-18 09:57:50', 'low', 'Success', 'Gynaecology', 'Schiller-Maggio', 46641929);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('surgery', '2021-03-09 09:44:15', 'high', 'Success', 'Obstetrics', 'Schiller-Maggio', 26597547);
@@ -494,7 +494,7 @@ insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) va
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('analysis', '2021-02-27 12:35:34', 'low', 'Tumour was found to be benign', 'Gynaecology', 'Schiller-Maggio', 11600891);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('appointment', '2021-02-18 23:08:49', 'low', 'Prescription given for back pain', 'General Medicine', 'Deckow-Jenkins', 59884274);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('therapy', '2021-03-09 17:50:02', 'low', 'Positive improvement', 'Internment', 'Farrell Group', 11600891);
-update Ocurrence set followUp = 2 where id = 4;
+update Ocurrence set followUp = 4 where id = 2;
 update Ocurrence set followUp = 46 where id = 45;
 
 INSERT INTO Participated (ocurrence, healthProfessional) values (1, 10226927); 
