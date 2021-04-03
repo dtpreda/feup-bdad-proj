@@ -92,10 +92,10 @@ CREATE TABLE Condition (
     gravity TEXT CONSTRAINT gravityValues CHECK(gravity = 'high' OR gravity = 'medium' OR gravity = 'low') NOT NULL
 );
 
-CREATE TABLE Prescription ( --TODO better name? change both here and in the report
+CREATE TABLE Prescription (
     patientCC INTEGER REFERENCES Patient ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     condition TEXT REFERENCES Condition ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
-    drugName TEXT DEFAULT NULL,  --default é null para quando não há medicação vv
+    drugName TEXT DEFAULT NULL,
     quantity INTEGER CONSTRAINT quantityRange CHECK((quantity IS NULL) OR quantity > 0) DEFAULT NULL,
     PRIMARY KEY (patientCC, condition),
     CONSTRAINT nameQuantityCoherence CHECK((quantity IS NULL AND drugName IS NULL) OR (quantity IS NOT NULL AND drugName IS NOT NULL))
