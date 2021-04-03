@@ -445,7 +445,7 @@ insert into WorksAt (healthProfessional, unitName, hospitalName) values (9297188
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (17791057, 'Internment', 'Deckow-Jenkins');
 
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('appointment', '2021-03-18 09:23:29', 'low', 'Success', 'Radiology', 'Schiller-Maggio', 20289661);
-insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('therapy', '2021-03-22 05:16:14', 'medium', 'Cured', 'Urgencies', 'Schiller-Maggio', 53212792);
+insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('therapy', '2021-03-24 05:16:14', 'medium', 'Cured', 'Urgencies', 'Schiller-Maggio', 53212792);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('analysis', '2021-04-01 06:50:55', 'low','Inconclusive', 'Cardiology', 'Schiller-Maggio', 57952589);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('appointment', '2021-03-23 01:37:16', 'medium', 'Success', 'Intensive Care', 'Schiller-Maggio', 53212792);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('emergency', '2021-02-24 15:18:21', 'high', 'Success', 'Cardiology', 'Nader-Ryan', 20289661);
@@ -489,7 +489,7 @@ insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) va
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('analysis', '2021-02-10 05:52:29', 'medium', 'Cholesterol found to be too high', 'Cardiology', 'Farrell Group', 66567575);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('therapy', '2021-02-03 17:49:46', 'low', 'Final therapy session', 'Intensive Care', 'Schiller-Maggio', 66567575);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('emergency', '2021-03-10 01:09:11', 'medium', '30 stitches given', 'Urgencies', 'Nader-Ryan', 63400671);
-insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('therapy', '2021-02-14 15:06:39', 'low', 'Stale Progress', 'Internment', 'Deckow-Jenkins', 63400671);
+insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('therapy', '2021-03-14 15:06:39', 'low', 'Stale Progress', 'Internment', 'Deckow-Jenkins', 63400671);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('therapy', '2021-03-01 14:50:42', 'low', 'Stale progress', 'Internment', 'Farrell Group', 59884274);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('analysis', '2021-02-27 12:35:34', 'low', 'Tumour was found to be benign', 'Gynecology', 'Schiller-Maggio', 11600891);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('appointment', '2021-02-18 23:08:49', 'low', 'Prescription given for back pain', 'General Medicine', 'Deckow-Jenkins', 59884274);
