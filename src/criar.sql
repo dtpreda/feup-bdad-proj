@@ -82,8 +82,8 @@ CREATE TABLE Ocurrence (
 );
 
 CREATE TABLE Participated (
-    ocurrence INTEGER REFERENCES Ocurrence ON DELETE CASCADE ON UPDATE CASCADE,
-    healthProfessional INTEGER REFERENCES HealthProfessional ON DELETE CASCADE ON UPDATE CASCADE,
+    ocurrence INTEGER REFERENCES Ocurrence ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+    healthProfessional INTEGER REFERENCES HealthProfessional ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     PRIMARY KEY (ocurrence, healthProfessional)
 );
 
