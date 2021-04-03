@@ -95,7 +95,7 @@ CREATE TABLE Condition (
 CREATE TABLE Prescription ( --TODO better name? change both here and in the report
     patientCC INTEGER REFERENCES Patient ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     condition TEXT REFERENCES Condition ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
-    name TEXT DEFAULT NULL,  --default é null para quando não há medicação vv
+    drugName TEXT DEFAULT NULL,  --default é null para quando não há medicação vv
     quantity INTEGER CONSTRAINT quantityRange CHECK((quantity = NULL) OR quantity > 0) DEFAULT NULL,
     PRIMARY KEY (patientCC, condition)
 );
