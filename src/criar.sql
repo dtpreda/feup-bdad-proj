@@ -20,14 +20,14 @@ DROP TABLE IF EXISTS Hospital;
 CREATE TABLE Hospital (
 	name TEXT PRIMARY KEY NOT NULL,
     region TEXT CONSTRAINT regionValues CHECK(region = 'Norte' OR region = 'Centro' OR region = 'Lisboa e Vale do Tejo' OR region = 'Alentejo' OR region = 'Algarve' OR region = 'Açores' OR region = 'Madeira') NOT NULL,
-    openingDate INTEGER CONSTRAINT beforeNow CHECK((openingDate = NULL) OR strftime('%Y-%m-%d %H:%M:%S', openingDate) < strftime()),
+    openingDate INTEGER CONSTRAINT beforeNow CHECK((openingDate IS NULL) OR strftime('%Y-%m-%d %H:%M:%S', openingDate) < strftime()),
     address TEXT UNIQUE NOT NULL
 );
 
 CREATE TABLE Unit (
     name TEXT CONSTRAINT speciality CHECK(name = 'Cardiology' OR name = 'Pediatry' OR name = 'Neurology' OR name = 'Obstretics' OR name = 'Urgencies' OR name = 'Intensive Care' OR name = 'Radiology' OR name = 'Oncology' OR name = 'General Medicine' OR name = 'Allergology' OR name = 'Internment' OR name = 'Dermatology' OR name = 'Urology' OR name = 'Gynecology' OR name = 'Psychiatry') NOT NULL, 
     hospital TEXT REFERENCES Hospital ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
-    openingDate INTEGER CONSTRAINT beforeNow CHECK((openingDate = NULL) OR strftime('%Y-%m-%d %H:%M:%S', openingDate) < strftime()),
+    openingDate INTEGER CONSTRAINT beforeNow CHECK((openingDate IS NULL) OR strftime('%Y-%m-%d %H:%M:%S', openingDate) < strftime()),
     phone INTEGER UNIQUE CONSTRAINT PhoneRange CHECK(99999999 < phone AND phone < 1000000000) NOT NULL,
     head INTEGER UNIQUE REFERENCES HealthProfessional ON UPDATE CASCADE, 
     PRIMARY KEY(name, hospital)
@@ -76,7 +76,7 @@ CREATE TABLE Ocurrence (
     unit TEXT,
     hospital TEXT,
     patient INTEGER REFERENCES Patient ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
-    followUp INTEGER UNIQUE REFERENCES Ocurrence ON DELETE SET NULL ON UPDATE CASCADE CONSTRAINT followUpCheck CHECK((id = NULL) OR id != followUp) DEFAULT NULL,
+    followUp INTEGER UNIQUE REFERENCES Ocurrence ON DELETE SET NULL ON UPDATE CASCADE CONSTRAINT followUpCheck CHECK((id IS NULL) OR id <> followUp) DEFAULT NULL,
     UNIQUE (patient, date),
     FOREIGN KEY (unit, hospital) REFERENCES Unit ON DELETE SET NULL ON UPDATE CASCADE
 );
@@ -96,9 +96,9 @@ CREATE TABLE Prescription ( --TODO better name? change both here and in the repo
     patientCC INTEGER REFERENCES Patient ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     condition TEXT REFERENCES Condition ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     drugName TEXT DEFAULT NULL,  --default é null para quando não há medicação vv
-    quantity INTEGER CONSTRAINT quantityRange CHECK((quantity = NULL) OR quantity > 0) DEFAULT NULL,
+    quantity INTEGER CONSTRAINT quantityRange CHECK((quantity IS NULL) OR quantity > 0) DEFAULT NULL,
     PRIMARY KEY (patientCC, condition),
-    CONSTRAINT nameQuantityCoherence CHECK((quantity = NULL AND name = NULL) OR (quantity != NULL AND name != NULL))
+    CONSTRAINT nameQuantityCoherence CHECK((quantity IS NULL AND drugName IS NULL) OR (quantity IS NOT NULL AND drugName IS NOT NULL))
 );
 
 CREATE TABLE Doctor (
