@@ -97,7 +97,8 @@ CREATE TABLE Prescription ( --TODO better name? change both here and in the repo
     condition TEXT REFERENCES Condition ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     name TEXT DEFAULT NULL,  --default é null para quando não há medicação vv
     quantity INTEGER CONSTRAINT quantityRange CHECK((quantity = NULL) OR quantity > 0) DEFAULT NULL,
-    PRIMARY KEY (patientCC, condition)
+    PRIMARY KEY (patientCC, condition),
+    CONSTRAINT nameQuantityCoherence CHECK((quantity = NULL AND name = NULL) OR (quantity != NULL AND name != NULL))
 );
 
 CREATE TABLE Doctor (
