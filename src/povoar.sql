@@ -105,6 +105,7 @@ insert into Person (cc, name, birthDate) values (96570562, 'Barty Robens', '1985
 insert into Person (cc, name, birthDate) values (44398698, 'Elia Rathborne', '1975-02-20 03:28:12');
 insert into Person (cc, name, birthDate) values (92971884, 'Daryl Joseland', '2012-05-26 09:36:12');
 insert into Person (cc, name, birthDate) values (17791057, 'Chris Maccaig', '2001-01-28 04:29:48');
+insert into Person (cc, name, birthDate) values (12938912, 'Drake Ramoray', '2001-01-28 04:29:48');
 
 insert into Patient (cc, insuranceName, healthUserNumber) values (20289661, 'Fliptune', 447204780); 
 insert into Patient (cc, insuranceName, healthUserNumber) values (53212792, 'Linkbuzz', 322697248); 
@@ -232,6 +233,7 @@ insert into HealthProfessional (cc, yearsOfService, baseSalary) values (96570562
 insert into HealthProfessional (cc, yearsOfService, baseSalary) values (44398698, 29, 2212);
 insert into HealthProfessional (cc, yearsOfService, baseSalary) values (92971884, 11, 3306);
 insert into HealthProfessional (cc, yearsOfService, baseSalary) values (17791057, 28, 3298);
+insert into HealthProfessional (cc, yearsOfService, baseSalary) values (12938912, 30, 4120);
 
 insert into Unit (name, hospital, openingDate, phone, head) values ('Radiology', 'Schiller-Maggio', '2011-05-31 19:26:22', 811750634, 10226927);
 insert into Unit (name, hospital, openingDate, phone, head) values ('Urgencies', 'Schiller-Maggio', '1986-04-18 02:57:12', 573198689, 32669329);
@@ -334,13 +336,14 @@ insert into Doctor (healthProfessionalCC, type, specialty) values (35069349, 'at
 insert into Doctor (healthProfessionalCC, type, specialty) values (64552572, 'resident', 'Dermatology');
 insert into Doctor (healthProfessionalCC, type, specialty) values (21619901, 'attending', 'Pediatrics');
 insert into Doctor (healthProfessionalCC, type, specialty) values (71210599, 'resident', 'Urgencies');
-insert into Doctor (healthProfessionalCC, type, specialty) values (57257607, 'resident', 'Obstetrics');
+insert into Doctor (healthProfessionalCC, type, specialty) values (57257607, 'attending', 'Obstetrics');
 insert into Doctor (healthProfessionalCC, type, specialty) values (95862914, 'resident', 'Intensive Care');
 insert into Doctor (healthProfessionalCC, type, specialty) values (17404218, 'resident', 'Allergology');
 insert into Doctor (healthProfessionalCC, type, specialty) values (91684577, 'attending', 'Internment');
 insert into Doctor (healthProfessionalCC, type, specialty) values (80108542, 'resident', 'Gynaecology');
 insert into Doctor (healthProfessionalCC, type, specialty) values (56497676, 'resident', 'Psychiatry');
 insert into Doctor (healthProfessionalCC, type, specialty) values (28339320, 'resident', 'Obstetrics');
+insert into Doctor (healthProfessionalCC, type, specialty) values (12938912, 'attending', 'Neurology');
 
 insert into EmployedAt (healthProfessional, hospitalName, id) values (10226927, 'Schiller-Maggio', 1295);
 insert into EmployedAt (healthProfessional, hospitalName, id) values (32669329, 'Schiller-Maggio', 3716);
