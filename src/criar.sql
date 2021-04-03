@@ -75,7 +75,7 @@ CREATE TABLE Ocurrence (
     outcome TEXT,
     unit TEXT,
     hospital TEXT,
-    patient INTEGER REFERENCES Patient ON DELETE SET NULL ON UPDATE CASCADE,
+    patient INTEGER REFERENCES Patient ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     followUp INTEGER UNIQUE REFERENCES Ocurrence ON DELETE SET NULL ON UPDATE CASCADE CONSTRAINT followUpCheck CHECK((id = NULL) OR id != followUp) DEFAULT NULL,
     UNIQUE (patient, date),
     FOREIGN KEY (unit, hospital) REFERENCES Unit ON DELETE SET NULL ON UPDATE CASCADE
@@ -95,7 +95,7 @@ CREATE TABLE Condition (
 CREATE TABLE Prescription ( --TODO better name? change both here and in the report
     patientCC INTEGER REFERENCES Patient ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     condition TEXT REFERENCES Condition ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
-    name TEXT DEFAULT NULL,  --default é null para quando não há medicação vv
+    drugName TEXT DEFAULT NULL,  --default é null para quando não há medicação vv
     quantity INTEGER CONSTRAINT quantityRange CHECK((quantity = NULL) OR quantity > 0) DEFAULT NULL,
     PRIMARY KEY (patientCC, condition),
     CONSTRAINT nameQuantityCoherence CHECK((quantity = NULL AND name = NULL) OR (quantity != NULL AND name != NULL))
