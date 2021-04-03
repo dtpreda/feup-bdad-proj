@@ -29,7 +29,7 @@ CREATE TABLE Unit (
     hospital TEXT REFERENCES Hospital ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     openingDate INTEGER CONSTRAINT beforeNow CHECK((openingDate = NULL) OR strftime('%Y-%m-%d %H:%M:%S', openingDate) < strftime()),
     phone INTEGER UNIQUE CONSTRAINT PhoneRange CHECK(99999999 < phone AND phone < 1000000000) NOT NULL,
-    head INTEGER UNIQUE REFERENCES HealthProfessional ON DELETE SET NULL ON UPDATE CASCADE, 
+    head INTEGER UNIQUE REFERENCES HealthProfessional ON UPDATE CASCADE, 
     PRIMARY KEY(name, hospital)
 );
 
