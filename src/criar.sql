@@ -25,7 +25,7 @@ CREATE TABLE Hospital (
 );
 
 CREATE TABLE Unit (
-    name TEXT CONSTRAINT speciality CHECK(name = 'Cardiology' OR name = 'Pediatry' OR name = 'Neurology' OR name = 'Obstretics' OR name = 'Urgencies' OR name = 'Intensive Care' OR name = 'Radiology' OR name = 'Oncology' OR name = 'General Medicine' OR name = 'Allergology' OR name = 'Internment' OR name = 'Dermatology' OR name = 'Urology' OR name = 'Gynecology' OR name = 'Psychiatry') NOT NULL, 
+    name TEXT CONSTRAINT speciality CHECK(name = 'Cardiology' OR name = 'Pediatrics' OR name = 'Neurology' OR name = 'Obstetrics' OR name = 'Urgencies' OR name = 'Intensive Care' OR name = 'Radiology' OR name = 'Oncology' OR name = 'General Medicine' OR name = 'Allergology' OR name = 'Internment' OR name = 'Dermatology' OR name = 'Urology' OR name = 'Gynaecology' OR name = 'Psychiatry') NOT NULL, 
     hospital TEXT REFERENCES Hospital ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     openingDate INTEGER CONSTRAINT beforeNow CHECK((openingDate IS NULL) OR strftime('%Y-%m-%d %H:%M:%S', openingDate) < strftime()),
     phone INTEGER UNIQUE CONSTRAINT PhoneRange CHECK(99999999 < phone AND phone < 1000000000) NOT NULL,
@@ -113,6 +113,6 @@ CREATE TABLE Nurse (
 );
 
 CREATE TABLE Specialty (
-    name TEXT PRIMARY KEY CONSTRAINT speciality CHECK(name = 'Cardiology' OR name = 'Pediatry' OR name = 'Neurology' OR name = 'Obstretics' OR name = 'Urgencies' OR name = 'Intensive Care' OR name = 'Radiology' OR name = 'Oncology' OR name = 'General Medicine' OR name = 'Allergology' OR name = 'Internment' OR name = 'Dermatology' OR name = 'Urology' OR name = 'Gynecology' OR name = 'Psychiatry') NOT NULL,
+    name TEXT PRIMARY KEY CONSTRAINT speciality CHECK(name = 'Cardiology' OR name = 'Pediatrics' OR name = 'Neurology' OR name = 'Obstetrics' OR name = 'Urgencies' OR name = 'Intensive Care' OR name = 'Radiology' OR name = 'Oncology' OR name = 'General Medicine' OR name = 'Allergology' OR name = 'Internment' OR name = 'Dermatology' OR name = 'Urology' OR name = 'Gynaecology' OR name = 'Psychiatry') NOT NULL,
     extraSalaryPerYear INTEGER CONSTRAINT PositiveExtraSalaray CHECK(extraSalaryPerYear > 0) DEFAULT 1
 );

@@ -238,8 +238,8 @@ insert into Unit (name, hospital, openingDate, phone, head) values ('Urgencies',
 insert into Unit (name, hospital, openingDate, phone, head) values ('Cardiology', 'Schiller-Maggio', '1992-05-13 18:58:30', 772357869, 67258453);
 insert into Unit (name, hospital, openingDate, phone, head) values ('Intensive Care', 'Schiller-Maggio', '2003-10-26 17:01:32', 117754139, 97289982);
 insert into Unit (name, hospital, openingDate, phone, head) values ('Cardiology', 'Nader-Ryan', '1975-04-08 22:35:48', 559678332, 78193499);
-insert into Unit (name, hospital, openingDate, phone, head) values ('Gynecology', 'Schiller-Maggio', '1976-06-02 11:05:18', 942183072, 18544378);
-insert into Unit (name, hospital, openingDate, phone, head) values ('Obstretics', 'Schiller-Maggio', '1985-05-10 17:42:06', 391841151, 74733965);
+insert into Unit (name, hospital, openingDate, phone, head) values ('Gynaecology', 'Schiller-Maggio', '1976-06-02 11:05:18', 942183072, 18544378);
+insert into Unit (name, hospital, openingDate, phone, head) values ('Obstetrics', 'Schiller-Maggio', '1985-05-10 17:42:06', 391841151, 74733965);
 insert into Unit (name, hospital, openingDate, phone, head) values ('Internment', 'Schiller-Maggio', '1980-10-20 07:36:47', 293511795, 35069349);
 insert into Unit (name, hospital, openingDate, phone, head) values ('Allergology', 'Schiller-Maggio', '1993-01-05 05:46:30', 861454973, 64552572);
 insert into Unit (name, hospital, openingDate, phone, head) values ('Neurology', 'Nader-Ryan', '2005-05-13 12:57:49', 618833372, 21619901);
@@ -260,7 +260,7 @@ insert into Unit (name, hospital, openingDate, phone, head) values ('Urgencies',
 insert into Unit (name, hospital, openingDate, phone, head) values ('Dermatology', 'Morissette, Auer and Hackett', '2000-05-15 01:14:12', 147170909, 90293050);
 insert into Unit (name, hospital, openingDate, phone, head) values ('Allergology', 'Morissette, Auer and Hackett', '1985-09-27 04:07:53', 366952470, 44082554);
 insert into Unit (name, hospital, openingDate, phone, head) values ('Allergology', 'Muller-Schulist', '2013-10-30 10:41:18', 846557814, 21744097);
-insert into Unit (name, hospital, openingDate, phone, head) values ('Obstretics', 'Morissette, Auer and Hackett', '1973-05-11 23:30:05', 842541912, 15623383);
+insert into Unit (name, hospital, openingDate, phone, head) values ('Obstetrics', 'Morissette, Auer and Hackett', '1973-05-11 23:30:05', 842541912, 15623383);
 insert into Unit (name, hospital, openingDate, phone, head) values ('Oncology', 'Morissette, Auer and Hackett', '2007-06-28 18:38:36', 963872654, 62421857);
 insert into Unit (name, hospital, openingDate, phone, head) values ('Intensive Care', 'Morissette, Auer and Hackett', '1991-03-30 17:31:53', 504149234, 33114157);
 insert into Unit (name, hospital, openingDate, phone, head) values ('Radiology', 'Morissette, Auer and Hackett', '1990-12-03 15:47:34', 461930730, 16785706);
@@ -271,13 +271,13 @@ insert into Unit (name, hospital, openingDate, phone, head) values ('Oncology', 
 insert into Unit (name, hospital, openingDate, phone, head) values ('Dermatology', 'Farrell Group', '1982-09-15 18:40:55', 762901433, 49539395);
 insert into Unit (name, hospital, openingDate, phone, head) values ('Internment', 'Farrell Group', '1979-12-10 00:08:02', 915589902, 21014334);
 insert into Unit (name, hospital, openingDate, phone, head) values ('Cardiology', 'Farrell Group', '1987-03-21 12:04:25', 778641579, 98318812);
-insert into Unit (name, hospital, openingDate, phone, head) values ('Gynecology', 'Muller-Schulist', '1972-05-25 21:44:37', 197962784, 56417746);
+insert into Unit (name, hospital, openingDate, phone, head) values ('Gynaecology', 'Muller-Schulist', '1972-05-25 21:44:37', 197962784, 56417746);
 insert into Unit (name, hospital, openingDate, phone, head) values ('Neurology', 'Muller-Schulist', '1986-03-05 16:47:45', 502930155, 56665880);
 
 INSERT into Specialty (name, extraSalaryPerYear) values ('Cardiology', 1000);
-INSERT into Specialty (name, extraSalaryPerYear) values ('Pediatry', 1000);
+INSERT into Specialty (name, extraSalaryPerYear) values ('Pediatrics', 1000);
 INSERT into Specialty (name, extraSalaryPerYear) values ('Neurology', 1000);
-INSERT into Specialty (name, extraSalaryPerYear) values ('Obstretics', 1000);
+INSERT into Specialty (name, extraSalaryPerYear) values ('Obstetrics', 1000);
 INSERT into Specialty (name, extraSalaryPerYear) values ('Urgencies', 1000);
 INSERT into Specialty (name, extraSalaryPerYear) values ('Intensive Care', 1000);
 INSERT into Specialty (name, extraSalaryPerYear) values ('Radiology', 1000);
@@ -287,7 +287,7 @@ INSERT into Specialty (name, extraSalaryPerYear) values ('Allergology', 1000);
 INSERT into Specialty (name, extraSalaryPerYear) values ('Internment', 1000);
 INSERT into Specialty (name, extraSalaryPerYear) values ('Dermatology', 1000);
 INSERT into Specialty (name, extraSalaryPerYear) values ('Urology', 1000);
-INSERT into Specialty (name, extraSalaryPerYear) values ('Gynecology', 1000);
+INSERT into Specialty (name, extraSalaryPerYear) values ('Gynaecology', 1000);
 INSERT into Specialty (name, extraSalaryPerYear) values ('Psychiatry', 1000); 
 
 insert into Nurse (healthProfessionalCC) values (33008447);
@@ -332,15 +332,15 @@ insert into Doctor (healthProfessionalCC, type, specialty) values (18544378, 're
 insert into Doctor (healthProfessionalCC, type, specialty) values (74733965, 'attending', 'Oncology');
 insert into Doctor (healthProfessionalCC, type, specialty) values (35069349, 'attending', 'Urology');
 insert into Doctor (healthProfessionalCC, type, specialty) values (64552572, 'resident', 'Dermatology');
-insert into Doctor (healthProfessionalCC, type, specialty) values (21619901, 'attending', 'Pediatry');
+insert into Doctor (healthProfessionalCC, type, specialty) values (21619901, 'attending', 'Pediatrics');
 insert into Doctor (healthProfessionalCC, type, specialty) values (71210599, 'resident', 'Urgencies');
-insert into Doctor (healthProfessionalCC, type, specialty) values (57257607, 'resident', 'Obstretics');
+insert into Doctor (healthProfessionalCC, type, specialty) values (57257607, 'resident', 'Obstetrics');
 insert into Doctor (healthProfessionalCC, type, specialty) values (95862914, 'resident', 'Intensive Care');
 insert into Doctor (healthProfessionalCC, type, specialty) values (17404218, 'resident', 'Allergology');
 insert into Doctor (healthProfessionalCC, type, specialty) values (91684577, 'attending', 'Internment');
-insert into Doctor (healthProfessionalCC, type, specialty) values (80108542, 'resident', 'Gynecology');
+insert into Doctor (healthProfessionalCC, type, specialty) values (80108542, 'resident', 'Gynaecology');
 insert into Doctor (healthProfessionalCC, type, specialty) values (56497676, 'resident', 'Psychiatry');
-insert into Doctor (healthProfessionalCC, type, specialty) values (28339320, 'resident', 'Obstretics');
+insert into Doctor (healthProfessionalCC, type, specialty) values (28339320, 'resident', 'Obstetrics');
 
 insert into EmployedAt (healthProfessional, hospitalName, id) values (10226927, 'Schiller-Maggio', 1295);
 insert into EmployedAt (healthProfessional, hospitalName, id) values (32669329, 'Schiller-Maggio', 3716);
@@ -398,8 +398,8 @@ insert into WorksAt (healthProfessional, unitName, hospitalName) values (3266932
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (67258453, 'Cardiology', 'Schiller-Maggio');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (97289982, 'Intensive Care', 'Schiller-Maggio');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (78193499, 'Cardiology', 'Nader-Ryan');
-insert into WorksAt (healthProfessional, unitName, hospitalName) values (18544378, 'Gynecology', 'Schiller-Maggio');
-insert into WorksAt (healthProfessional, unitName, hospitalName) values (74733965, 'Obstretics', 'Schiller-Maggio');
+insert into WorksAt (healthProfessional, unitName, hospitalName) values (18544378, 'Gynaecology', 'Schiller-Maggio');
+insert into WorksAt (healthProfessional, unitName, hospitalName) values (74733965, 'Obstetrics', 'Schiller-Maggio');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (35069349, 'Internment', 'Schiller-Maggio');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (64552572, 'Allergology', 'Schiller-Maggio');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (21619901, 'Neurology', 'Nader-Ryan');
@@ -420,7 +420,7 @@ insert into WorksAt (healthProfessional, unitName, hospitalName) values (5795258
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (90293050, 'Dermatology', 'Morissette, Auer and Hackett');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (44082554, 'Allergology', 'Morissette, Auer and Hackett');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (21744097, 'Allergology', 'Muller-Schulist');
-insert into WorksAt (healthProfessional, unitName, hospitalName) values (15623383, 'Obstretics', 'Morissette, Auer and Hackett');
+insert into WorksAt (healthProfessional, unitName, hospitalName) values (15623383, 'Obstetrics', 'Morissette, Auer and Hackett');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (62421857, 'Oncology', 'Morissette, Auer and Hackett');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (33114157, 'Intensive Care', 'Morissette, Auer and Hackett');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (16785706, 'Radiology', 'Morissette, Auer and Hackett');
@@ -431,14 +431,14 @@ insert into WorksAt (healthProfessional, unitName, hospitalName) values (9227526
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (49539395, 'Dermatology', 'Farrell Group');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (21014334, 'Internment', 'Farrell Group');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (98318812, 'Cardiology', 'Farrell Group');
-insert into WorksAt (healthProfessional, unitName, hospitalName) values (56417746, 'Gynecology', 'Muller-Schulist');
+insert into WorksAt (healthProfessional, unitName, hospitalName) values (56417746, 'Gynaecology', 'Muller-Schulist');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (56665880, 'Neurology', 'Muller-Schulist');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (49541323, 'Dermatology', 'Morissette, Auer and Hackett');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (31930709, 'Urgencies', 'Morissette, Auer and Hackett');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (60058126, 'Dermatology', 'Farrell Group');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (17261544, 'Allergology', 'Deckow-Jenkins');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (77694559, 'Psychiatry', 'Nader-Ryan');
-insert into WorksAt (healthProfessional, unitName, hospitalName) values (70087289, 'Obstretics', 'Morissette, Auer and Hackett');
+insert into WorksAt (healthProfessional, unitName, hospitalName) values (70087289, 'Obstetrics', 'Morissette, Auer and Hackett');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (96570562, 'Allergology', 'Farrell Group');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (44398698, 'Cardiology', 'Deckow-Jenkins');
 insert into WorksAt (healthProfessional, unitName, hospitalName) values (92971884, 'Oncology', 'Morissette, Auer and Hackett');
@@ -449,8 +449,8 @@ insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) va
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('analysis', '2021-04-01 06:50:55', 'low','Inconclusive', 'Cardiology', 'Schiller-Maggio', 57952589);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('appointment', '2021-03-23 01:37:16', 'medium', 'Success', 'Intensive Care', 'Schiller-Maggio', 53212792);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('emergency', '2021-02-24 15:18:21', 'high', 'Success', 'Cardiology', 'Nader-Ryan', 20289661);
-insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('analysis', '2021-03-18 09:57:50', 'low', 'Success', 'Gynecology', 'Schiller-Maggio', 46641929);
-insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('surgery', '2021-03-09 09:44:15', 'high', 'Success', 'Obstretics', 'Schiller-Maggio', 26597547);
+insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('analysis', '2021-03-18 09:57:50', 'low', 'Success', 'Gynaecology', 'Schiller-Maggio', 46641929);
+insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('surgery', '2021-03-09 09:44:15', 'high', 'Success', 'Obstetrics', 'Schiller-Maggio', 26597547);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('analysis', '2021-03-15 21:46:55', 'low', 'Inconclusive', 'Internment', 'Schiller-Maggio', 63400671);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('therapy', '2021-03-15 04:24:52', 'medium', 'Failed','Allergology', 'Schiller-Maggio', 59884274);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('emergency', '2021-03-20 22:33:11', 'high', 'Success', 'Neurology', 'Nader-Ryan', 59884274);
@@ -491,7 +491,7 @@ insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) va
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('emergency', '2021-03-10 01:09:11', 'medium', '30 stitches given', 'Urgencies', 'Nader-Ryan', 63400671);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('therapy', '2021-03-14 15:06:39', 'low', 'Stale Progress', 'Internment', 'Deckow-Jenkins', 63400671);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('therapy', '2021-03-01 14:50:42', 'low', 'Stale progress', 'Internment', 'Farrell Group', 59884274);
-insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('analysis', '2021-02-27 12:35:34', 'low', 'Tumour was found to be benign', 'Gynecology', 'Schiller-Maggio', 11600891);
+insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('analysis', '2021-02-27 12:35:34', 'low', 'Tumour was found to be benign', 'Gynaecology', 'Schiller-Maggio', 11600891);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('appointment', '2021-02-18 23:08:49', 'low', 'Prescription given for back pain', 'General Medicine', 'Deckow-Jenkins', 59884274);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('therapy', '2021-03-09 17:50:02', 'low', 'Positive improvement', 'Internment', 'Farrell Group', 11600891);
 update Ocurrence set followUp = 2 where id = 4;
