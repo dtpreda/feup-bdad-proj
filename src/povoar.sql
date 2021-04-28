@@ -1,3 +1,5 @@
+PRAGMA foreign_keys=ON;
+
 insert into Hospital (name, region, openingDate, address) values ('Schiller-Maggio', 'Norte', '1971-11-01 03:38:42', '20 Cordelia Place');
 insert into Hospital (name, region, openingDate, address) values ('Nader-Ryan', 'Madeira', '1998-07-11 21:16:15', '10 Crownhardt Center');
 insert into Hospital (name, region, openingDate, address) values ('Deckow-Jenkins', 'Centro', '1973-08-16 07:29:28', '5 Holy Cross Junction');
