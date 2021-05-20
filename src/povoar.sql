@@ -502,6 +502,12 @@ insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) va
 update Ocurrence set followUp = 4 where id = 2;
 update Ocurrence set followUp = 46 where id = 45;
 
+--Tests for int6
+insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('therapy', '2021-03-18 09:23:29', 'low', 'test', 'Radiology', 'Schiller-Maggio', 10226927); -- 51
+insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('therapy', '2021-03-18 09:23:29', 'low', 'test', 'Radiology', 'Schiller-Maggio', 32669329); -- 52
+insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('therapy', '2021-03-19 09:23:29', 'low', 'test', 'Radiology', 'Schiller-Maggio', 32669329); -- 53
+
+
 INSERT INTO Participated (ocurrence, healthProfessional) values (1, 10226927); 
 INSERT INTO Participated (ocurrence, healthProfessional) values (2, 32669329); 
 INSERT INTO Participated (ocurrence, healthProfessional) values (3, 67258453); 
@@ -552,6 +558,20 @@ INSERT INTO Participated (ocurrence, healthProfessional) values (47, 96570562);
 INSERT INTO Participated (ocurrence, healthProfessional) values (48, 44398698); 
 INSERT INTO Participated (ocurrence, healthProfessional) values (49, 92971884); 
 INSERT INTO Participated (ocurrence, healthProfessional) values (50, 17791057); 
+
+--Tests for int6 and int10
+INSERT INTO Participated (ocurrence, healthProfessional) values (51, 33008447); 
+INSERT INTO Participated (ocurrence, healthProfessional) values (52, 33008447); 
+INSERT INTO Participated (ocurrence, healthProfessional) values (53, 33008447); 
+
+INSERT INTO Participated (ocurrence, healthProfessional) values (51, 32669329); 
+INSERT INTO Participated (ocurrence, healthProfessional) values (52, 32669329); 
+
+INSERT INTO Participated (ocurrence, healthProfessional) values (52, 64552572); 
+INSERT INTO Participated (ocurrence, healthProfessional) values (53, 64552572); 
+
+INSERT INTO Participated (ocurrence, healthProfessional) values (52, 17791057); 
+
 
 INSERT INTO Condition (name, gravity) VALUES ('Acne', 'low');
 INSERT INTO Condition (name, gravity) VALUES ('Allergies', 'low');
