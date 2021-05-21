@@ -95,10 +95,10 @@ CREATE TABLE Condition (
 CREATE TABLE Medication (
     patientCC INTEGER REFERENCES Patient ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     condition TEXT REFERENCES Condition ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
-    drugName TEXT DEFAULT NULL,
+    name TEXT DEFAULT NULL,
     quantity INTEGER CONSTRAINT quantityRange CHECK((quantity IS NULL) OR quantity > 0) DEFAULT NULL,
     PRIMARY KEY (patientCC, condition),
-    CONSTRAINT nameQuantityCoherence CHECK((quantity IS NULL AND drugName IS NULL) OR (quantity IS NOT NULL AND drugName IS NOT NULL))
+    CONSTRAINT nameQuantityCoherence CHECK((quantity IS NULL AND name IS NULL) OR (quantity IS NOT NULL AND name IS NOT NULL))
 );
 
 CREATE TABLE Doctor (
