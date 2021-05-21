@@ -2,7 +2,7 @@ PRAGMA foreign_keys=ON;
 .mode columns
 .headers ON
 
-DROP TABLE IF EXISTS Prescription;
+DROP TABLE IF EXISTS Medication;
 DROP TABLE IF EXISTS Condition;
 DROP TABLE IF EXISTS Participated;
 DROP TABLE IF EXISTS Ocurrence;
@@ -92,7 +92,7 @@ CREATE TABLE Condition (
     gravity TEXT CONSTRAINT gravityValues CHECK(gravity = 'high' OR gravity = 'medium' OR gravity = 'low') NOT NULL
 );
 
-CREATE TABLE Prescription (
+CREATE TABLE Medication (
     patientCC INTEGER REFERENCES Patient ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     condition TEXT REFERENCES Condition ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     drugName TEXT DEFAULT NULL,
