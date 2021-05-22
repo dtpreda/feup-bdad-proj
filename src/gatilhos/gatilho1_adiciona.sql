@@ -10,9 +10,6 @@ AFTER INSERT ON Ocurrence
 WHEN NEW.followUp NOT NULL
 BEGIN
     INSERT INTO FollowUpTable(firstID, currentID, lenght) values (NEW.id, NEW.followUp, 2);
-    UPDATE FollowUpTable
-    SET currentID = NEW.followUp, lenght = lenght + 1
-    WHERE currentID = NEW.id;
 END;
 
 CREATE TRIGGER IF NOT EXISTS followUpUpdate
