@@ -462,7 +462,7 @@ insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) va
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('exam', '2021-02-24 08:15:52', 'medium', 'Cured', 'General Medicine', 'Nader-Ryan', 26597547);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('analysis', '2021-03-29 14:47:14', 'medium', 'Cured', 'Neurology', 'Morissette, Auer and Hackett', 74733965);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('therapy', '2021-02-11 04:00:22', 'low', 'Success', 'Psychiatry', 'Nader-Ryan', 89035321);
-insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('emergency', '2021-02-09 18:00:55', 'high', 'Success', 'Neurology', 'Deckow-Jenkins', 20289661);
+insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('emergency', '2021-03-20 18:00:55', 'high', 'Success', 'Neurology', 'Deckow-Jenkins', 20289661);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('surgery', '2021-03-06 13:50:44', 'high', 'Great Success', 'Oncology', 'Nader-Ryan', 74733965);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('emergency', '2021-03-14 01:46:58', 'medium', 'Success', 'Urgencies', 'Nader-Ryan', 57952589);
 insert into Ocurrence (type, date, gravity, outcome, unit, hospital, patient) values ('therapy', '2021-03-17 17:37:13', 'low', 'Cured', 'Allergology', 'Deckow-Jenkins', 63400671);

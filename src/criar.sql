@@ -86,7 +86,7 @@ CREATE TABLE Ocurrence (
 CREATE TABLE FollowUpTable (
     firstID INTEGER PRIMARY KEY,
     currentID INTEGER DEFAULT NULL,
-    lenght INTEGER DEFAULT 0
+    lenght INTEGER DEFAULT 1
 );
 
 CREATE TABLE Participated (
