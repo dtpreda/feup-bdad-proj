@@ -1,0 +1,3 @@
+DROP TRIGGER IF EXISTS followUpFirstInsert;
+DROP TRIGGER IF EXISTS followUpInsert;
+DROP TRIGGER IF EXISTS followUpUpdate;

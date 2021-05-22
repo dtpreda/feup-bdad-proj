@@ -2,6 +2,7 @@ PRAGMA foreign_keys=ON;
 .mode columns
 .headers ON
 
+DROP TABLE IF EXISTS FollowUpTable;
 DROP TABLE IF EXISTS Prescription;
 DROP TABLE IF EXISTS Condition;
 DROP TABLE IF EXISTS Participated;
@@ -79,6 +80,12 @@ CREATE TABLE Ocurrence (
     followUp INTEGER UNIQUE REFERENCES Ocurrence ON DELETE SET NULL ON UPDATE CASCADE CONSTRAINT followUpCheck CHECK((id IS NULL) OR id <> followUp) DEFAULT NULL,
     UNIQUE (patient, date),
     FOREIGN KEY (unit, hospital) REFERENCES Unit ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+CREATE TABLE FollowUpTable (
+    firstID INTEGER PRIMARY KEY,
+    currentID INTEGER DEFAULT NULL,
+    lenght INTEGER DEFAULT 0
 );
 
 CREATE TABLE Participated (
