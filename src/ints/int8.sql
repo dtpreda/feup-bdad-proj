@@ -3,19 +3,19 @@
 .nullvalue NULL
 
 
-select DISTINCT patient1 as patient, condition1 as condition, drugName1 as drugName
-from (
-    select * from
-        (select name as patient1, condition as condition1, drugName as drugName1 
-        from Person join (
-            select patientCC as cc, condition, drugName 
-            from Prescription) 
-        using (cc))
-    join 
-        (select name as patient2, drugName2, condition2 
-        from Person join (
-            select patientCC as cc, condition as condition2, drugName as drugName2
-            from Prescription) 
-        using (cc))
-    where patient1 <> patient2 and condition1 == condition2 and drugName1 == drugName2
-) order by (drugName);
+SELECT DISTINCT patient1 AS patient, condition1 AS condition, drugName1 AS drugName
+FROM (
+    SELECT * FROM
+        (SELECT name AS patient1, condition AS condition1, drugName AS drugName1 
+        FROM Person JOIN (
+            SELECT patientCC AS cc, condition, drugName 
+            FROM Prescription) 
+        USING (cc))
+    JOIN 
+        (SELECT name AS patient2, drugName2, condition2 
+        FROM Person JOIN (
+            SELECT patientCC AS cc, condition AS condition2, drugName AS drugName2
+            FROM Prescription) 
+        USING (cc))
+    WHERE patient1 <> patient2 AND condition1 == condition2 AND drugName1 == drugName2
+) ORDER BY (drugName);

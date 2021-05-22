@@ -19,7 +19,3 @@ FROM(
     FROM DoctorHospital
     GROUP BY hospitalName
 ) AS DoctorCounter using(hospitalName);
-
-
-
-

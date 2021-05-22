@@ -2,11 +2,6 @@
 .headers on
 .nullvalue NULL
 
--- SELECT id
--- FROM Person JOIN Patient USING(cc)
--- JOIN Ocurrence ON (Ocurrence.patient = Person.cc) 
--- WHERE name LIKE "%Yeager%";
-
 DROP VIEW IF EXISTS DoctorParticipated;
 
 CREATE View DoctorParticipated AS
@@ -32,22 +27,3 @@ WHERE (
     WHERE name LIKE "%Yeager%"
 )
 GROUP BY doctorCC;
-
--- Doctors that participated in every occurrence of every person with Yeager in their name
-
--- SELECT doctorCC 
--- FROM DoctorParticipated DP1
--- WHERE (
---     SELECT count(DISTINCT DP2.id) AS count1
---     FROM DoctorParticipated DP2
---     WHERE DP1.doctorCC = DP2.doctorCC AND personName LIKE "%Yeager%"
---     GROUP BY doctorCC
--- ) = (
---     SELECT count(*) AS count1
---     FROM Person JOIN Patient USING(cc)
---     JOIN Ocurrence ON (Ocurrence.patient = Person.cc) 
---     WHERE name LIKE "%Yeager%"
--- )
--- GROUP BY doctorCC;
-
-

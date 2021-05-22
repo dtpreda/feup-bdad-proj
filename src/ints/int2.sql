@@ -3,15 +3,15 @@
 .nullvalue NULL
 
 
-SELECT avg(baseSalary) as avgSalary, Specialty 
-from (
-    Select healthProfessionalCC as cc, Specialty 
-    from Doctor 
-    WHERE Specialty not NULL
-    union
-    Select healthProfessionalCC as cc, Specialty 
-    from Nurse 
-    WHERE Specialty not NULL
+SELECT avg(baseSalary) AS avgSalary, Specialty 
+FROM (
+    SELECT healthProfessionalCC AS cc, Specialty 
+    FROM Doctor 
+    WHERE Specialty NOT NULL
+    UNION
+    SELECT healthProfessionalCC AS cc, Specialty 
+    FROM Nurse 
+    WHERE Specialty NOT NULL
     ) 
-join HealthProfessional using (cc) 
-group by Specialty;
+JOIN HealthProfessional USING (cc) 
+GROUP BY Specialty;
