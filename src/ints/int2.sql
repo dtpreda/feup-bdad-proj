@@ -3,7 +3,7 @@
 .nullvalue NULL
 
 
-SELECT avg(baseSalary) AS avgSalary, Specialty 
+SELECT avg(baseSalary + extraSalary) AS avgSalary, Specialty 
 FROM (
     SELECT healthProfessionalCC AS cc, Specialty 
     FROM Doctor 
