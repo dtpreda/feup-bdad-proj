@@ -3,7 +3,7 @@
 .nullvalue NULL
 
 
-SELECT id AS idOfFirstAppointment, cc1 AS cc, name1 AS name, hospital1 AS hospital, dateOfFirstAppointment, dateOfLastAppointment, followUpLenght1 AS followUpLenght FROM (
+SELECT id AS idOfFirstAppointment, cc1 AS cc, name1 AS name, hospital1 AS hospitalOfFirstAppointment, dateOfFirstAppointment, dateOfLastAppointment, followUpLenght1 AS followUpLenght FROM (
     SELECT id, cc AS cc1, name AS name1, hospital AS hospital1, date AS dateOfFirstAppointment, followUpLenght AS followUpLenght1 FROM (
     SELECT * FROM Person JOIN (   
         SELECT id, date, patient AS cc, hospital, MAX(lenght) AS followUpLenght 
