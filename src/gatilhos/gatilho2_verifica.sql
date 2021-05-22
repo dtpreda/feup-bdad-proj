@@ -1,6 +1,7 @@
 PRAGMA foreign_keys=ON;
 .mode columns
 .headers ON
+.nullvalue NULL
 
 INSERT INTO Person (cc, name, birthDate) VALUES (46431142, 'Tim Jackson', '2001-08-21 11:21:33');
 INSERT INTO HealthProfessional (cc, yearsOfService, baseSalary) VALUES (46431142, 20, 5000);

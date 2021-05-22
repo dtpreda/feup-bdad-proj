@@ -1,3 +1,5 @@
+PRAGMA foreign_keys=on;
+
 CREATE TRIGGER IF NOT EXISTS followUpFirstInsert
 AFTER INSERT ON Ocurrence
 WHEN NEW.followUp IS NULL

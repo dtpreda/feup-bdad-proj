@@ -1,4 +1,7 @@
 PRAGMA foreign_keys=ON;
+.mode columns
+.headers on
+.nullvalue NULL
 
 SELECT * FROM Participated;
 

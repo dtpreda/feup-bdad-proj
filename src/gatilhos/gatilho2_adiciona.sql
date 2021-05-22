@@ -1,3 +1,5 @@
+PRAGMA foreign_keys=on;
+
 CREATE TRIGGER ExtraSalaryDoctor
 AFTER INSERT ON Doctor
 WHEN NEW.specialty NOT NULL
