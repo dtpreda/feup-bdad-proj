@@ -19,13 +19,13 @@ DROP TABLE IF EXISTS Hospital;
 
 CREATE TABLE Hospital (
 	name TEXT PRIMARY KEY NOT NULL,
-    region TEXT CONSTRAINT regionValues CHECK(region = 'Norte' OR region = 'Centro' OR region = 'Lisboa e Vale do Tejo' OR region = 'Alentejo' OR region = 'Algarve' OR region = 'Açores' OR region = 'Madeira') NOT NULL,
+    region TEXT CONSTRAINT regionValues CHECK(region IN('Norte', 'Centro', 'Lisboa e Vale do Tejo', 'Alentejo', 'Algarve', 'Açores' , 'Madeira')) NOT NULL,
     openingDate INTEGER CONSTRAINT beforeNow CHECK((openingDate IS NULL) OR strftime('%Y-%m-%d %H:%M:%S', openingDate) < strftime()),
     address TEXT UNIQUE NOT NULL
 );
 
 CREATE TABLE Unit (
-    name TEXT CONSTRAINT speciality CHECK(name = 'Cardiology' OR name = 'Pediatrics' OR name = 'Neurology' OR name = 'Obstetrics' OR name = 'Urgencies' OR name = 'Intensive Care' OR name = 'Radiology' OR name = 'Oncology' OR name = 'General Medicine' OR name = 'Allergology' OR name = 'Internment' OR name = 'Dermatology' OR name = 'Urology' OR name = 'Gynaecology' OR name = 'Psychiatry') NOT NULL, 
+    name TEXT CONSTRAINT speciality CHECK(name IN ('Cardiology', 'Pediatrics', 'Neurology', 'Obstetrics', 'Urgencies', 'Intensive Care', 'Radiology', 'Oncology', 'General Medicine', 'Allergology', 'Internment', 'Dermatology', 'Urology', 'Gynaecology', 'Psychiatry')) NOT NULL,
     hospital TEXT REFERENCES Hospital ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     openingDate INTEGER CONSTRAINT beforeNow CHECK((openingDate IS NULL) OR strftime('%Y-%m-%d %H:%M:%S', openingDate) < strftime()),
     phone INTEGER UNIQUE CONSTRAINT PhoneRange CHECK(99999999 < phone AND phone < 1000000000) NOT NULL,
@@ -69,9 +69,9 @@ CREATE TABLE WorksAt (
 
 CREATE TABLE Ocurrence (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    type TEXT CONSTRAINT typeOfOccurrence CHECK(type = 'appointment' OR type = 'surgery' OR type = 'emergency' OR type = 'analysis' OR type = 'exam' OR type = 'therapy') NOT NULL,
+    type TEXT CONSTRAINT typeOfOccurrence CHECK(type IN ('appointment', 'surgery', 'emergency', 'analysis', 'exam', 'therapy')) NOT NULL,
     date INTEGER CONSTRAINT beforeNow CHECK(strftime('%Y-%m-%d %H:%M:%S', date) < strftime()) NOT NULL, 
-    gravity TEXT CONSTRAINT gravityValues CHECK(gravity = 'high' OR gravity = 'medium' OR gravity = 'low') NOT NULL, 
+    gravity TEXT CONSTRAINT gravityValues CHECK(gravity IN ('high', 'medium', 'low')) NOT NULL, 
     outcome TEXT,
     unit TEXT,
     hospital TEXT,
@@ -89,7 +89,7 @@ CREATE TABLE Participated (
 
 CREATE TABLE Condition (
     name TEXT PRIMARY KEY NOT NULL,
-    gravity TEXT CONSTRAINT gravityValues CHECK(gravity = 'high' OR gravity = 'medium' OR gravity = 'low') NOT NULL
+    gravity TEXT CONSTRAINT gravityValues CHECK(gravity IN ('high', 'medium', 'low')) NOT NULL
 );
 
 CREATE TABLE Medication (
@@ -103,7 +103,7 @@ CREATE TABLE Medication (
 
 CREATE TABLE Doctor (
     healthProfessionalCC INTEGER PRIMARY KEY REFERENCES HealthProfessional ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
-    type TEXT CONSTRAINT DoctorType CHECK(type = 'intern' OR type = 'resident' OR type = 'attending') DEFAULT 'intern' NOT NULL,
+    type TEXT CONSTRAINT DoctorType CHECK(type IN ('intern', 'resident', 'attending')) NOT NULL,
     specialty TEXT REFERENCES Specialty ON DELETE SET NULL ON UPDATE CASCADE DEFAULT NULL
 );
 
@@ -113,6 +113,6 @@ CREATE TABLE Nurse (
 );
 
 CREATE TABLE Specialty (
-    name TEXT PRIMARY KEY CONSTRAINT speciality CHECK(name = 'Cardiology' OR name = 'Pediatrics' OR name = 'Neurology' OR name = 'Obstetrics' OR name = 'Urgencies' OR name = 'Intensive Care' OR name = 'Radiology' OR name = 'Oncology' OR name = 'General Medicine' OR name = 'Allergology' OR name = 'Internment' OR name = 'Dermatology' OR name = 'Urology' OR name = 'Gynaecology' OR name = 'Psychiatry') NOT NULL,
+    name TEXT PRIMARY KEY CONSTRAINT speciality CHECK(name IN ('Cardiology', 'Pediatrics', 'Neurology', 'Obstetrics', 'Urgencies', 'Intensive Care', 'Radiology', 'Oncology', 'General Medicine', 'Allergology', 'Internment', 'Dermatology', 'Urology', 'Gynaecology', 'Psychiatry')) NOT NULL,
     extraSalaryPerYear INTEGER CONSTRAINT PositiveExtraSalaray CHECK(extraSalaryPerYear > 0) DEFAULT 1
 );
