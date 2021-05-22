@@ -278,21 +278,21 @@ insert into Unit (name, hospital, openingDate, phone, head) values ('Cardiology'
 insert into Unit (name, hospital, openingDate, phone, head) values ('Gynaecology', 'Muller-Schulist', '1972-05-25 21:44:37', 197962784, 56417746);
 insert into Unit (name, hospital, openingDate, phone, head) values ('Neurology', 'Muller-Schulist', '1986-03-05 16:47:45', 502930155, 56665880);
 
-INSERT into Specialty (name, extraSalaryPerYear) values ('Cardiology', 1000);
-INSERT into Specialty (name, extraSalaryPerYear) values ('Pediatrics', 1000);
-INSERT into Specialty (name, extraSalaryPerYear) values ('Neurology', 1000);
-INSERT into Specialty (name, extraSalaryPerYear) values ('Obstetrics', 1000);
-INSERT into Specialty (name, extraSalaryPerYear) values ('Urgencies', 1000);
-INSERT into Specialty (name, extraSalaryPerYear) values ('Intensive Care', 1000);
-INSERT into Specialty (name, extraSalaryPerYear) values ('Radiology', 1000);
-INSERT into Specialty (name, extraSalaryPerYear) values ('Oncology', 1000);
-INSERT into Specialty (name, extraSalaryPerYear) values ('General Medicine', 1000);
-INSERT into Specialty (name, extraSalaryPerYear) values ('Allergology', 1000);
-INSERT into Specialty (name, extraSalaryPerYear) values ('Internment', 1000);
+INSERT into Specialty (name, extraSalaryPerYear) values ('Cardiology', 939);
+INSERT into Specialty (name, extraSalaryPerYear) values ('Pediatrics', 559);
+INSERT into Specialty (name, extraSalaryPerYear) values ('Neurology', 909);
+INSERT into Specialty (name, extraSalaryPerYear) values ('Obstetrics', 681);
+INSERT into Specialty (name, extraSalaryPerYear) values ('Urgencies', 906);
+INSERT into Specialty (name, extraSalaryPerYear) values ('Intensive Care', 637);
+INSERT into Specialty (name, extraSalaryPerYear) values ('Radiology', 514);
+INSERT into Specialty (name, extraSalaryPerYear) values ('Oncology', 969);
+INSERT into Specialty (name, extraSalaryPerYear) values ('General Medicine', 884);
+INSERT into Specialty (name, extraSalaryPerYear) values ('Allergology', 542);
+INSERT into Specialty (name, extraSalaryPerYear) values ('Internment', 677);
 INSERT into Specialty (name, extraSalaryPerYear) values ('Dermatology', 1000);
-INSERT into Specialty (name, extraSalaryPerYear) values ('Urology', 1000);
-INSERT into Specialty (name, extraSalaryPerYear) values ('Gynaecology', 1000);
-INSERT into Specialty (name, extraSalaryPerYear) values ('Psychiatry', 1000); 
+INSERT into Specialty (name, extraSalaryPerYear) values ('Urology', 971);
+INSERT into Specialty (name, extraSalaryPerYear) values ('Gynaecology', 633);
+INSERT into Specialty (name, extraSalaryPerYear) values ('Psychiatry', 773); 
 
 insert into Nurse (healthProfessionalCC) values (33008447);
 insert into Nurse (healthProfessionalCC) values (57952589);
