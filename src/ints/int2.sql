@@ -2,6 +2,7 @@
 .headers on
 .nullvalue NULL
 
+-- What is the average salary per health professional specialty?
 
 SELECT avg(baseSalary + extraSalary) AS avgSalary, Specialty 
 FROM (

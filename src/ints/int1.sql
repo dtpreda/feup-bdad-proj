@@ -2,7 +2,7 @@
 .headers on
 .nullvalue NULL
 
--- Número de ocorrencias por região.
+-- What is the number of occurrences per region?
 
 SELECT region, COUNT(*) AS numberOfOccurences
 FROM Hospital JOIN Ocurrence ON (Hospital.name=Ocurrence.hospital)

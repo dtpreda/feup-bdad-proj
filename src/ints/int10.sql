@@ -2,6 +2,8 @@
 .headers on
 .nullvalue NULL
 
+-- Which Doctors participated in all the occurrences of a given patient?
+
 DROP VIEW IF EXISTS DoctorParticipated;
 
 CREATE View DoctorParticipated AS

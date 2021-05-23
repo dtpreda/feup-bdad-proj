@@ -2,6 +2,7 @@
 .headers on
 .nullvalue NULL
 
+-- Which people with the same condition are taking the same medication?
 
 SELECT DISTINCT patient1 AS patient, condition1 AS condition, drugName1 AS medicationName
 FROM (

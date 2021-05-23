@@ -2,9 +2,9 @@
 .headers on
 .nullvalue NULL
 
--- Tipo de ocorrencia mais frequente por especialidade de HP.
+-- What is the most frequent type of Occurrence per Specialty of
+-- HealthProfessional and how much frequent it was?
 
---TODO detetar empates?
 
 SELECT specialty, type, MAX(total) AS total
 FROM (

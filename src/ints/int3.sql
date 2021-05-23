@@ -2,8 +2,7 @@
 .headers on
 .nullvalue NULL
 
--- Frequencia de gravidade de ocorrencia por faixa etária.
-
+-- What is the frequency of the different Occurrence gravity types per age group?
 
 DROP VIEW IF EXISTS AgeGravity;
 

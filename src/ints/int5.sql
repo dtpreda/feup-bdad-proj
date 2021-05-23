@@ -2,6 +2,8 @@
 .headers on
 .nullvalue NULL
 
+-- What is the ratio of Doctors whose type is 'Intern' per all the Doctors per Hospital?
+
 DROP VIEW IF EXISTS DoctorHospital;
 
 CREATE View DoctorHospital AS

@@ -2,7 +2,8 @@
 .headers on
 .nullvalue NULL
 
--- Listar os chefes de unidades com o total pago a todos os HPs da sua unidade e contagem de HPs.
+-- How many health professionals and how much money (spent on health 
+-- professionals’ salaries) are every head of Unit responsible for?
 
 SELECT head, SUM(baseSalary+extraSalary) AS totalPaid, COUNT(*) AS numberOfHealthProfessionals
 FROM Unit JOIN WorksAt

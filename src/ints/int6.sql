@@ -2,6 +2,9 @@
 .headers on
 .nullvalue NULL
 
+-- Which Doctors participated in at least one occurrence 
+-- of every patient that contain ‘Yeager’ in their name?
+
 DROP VIEW IF EXISTS DoctorParticipated;
 
 CREATE View DoctorParticipated AS
@@ -11,7 +14,6 @@ JOIN Participated ON (HealthProfessional.cc = Participated.healthProfessional)
 JOIN Ocurrence ON (Participated.ocurrence = Ocurrence.id) 
 JOIN Person ON (Ocurrence.patient = Person.cc);
 
--- Doctors that participated in at least 1 occurrence of every person with Yeager in their name
 
 SELECT doctorCC 
 FROM DoctorParticipated DP1
