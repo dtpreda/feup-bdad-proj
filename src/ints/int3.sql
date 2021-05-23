@@ -39,4 +39,6 @@ FROM (
             FROM AgeGravity
             WHERE age >= 50
         ) GROUP BY gravity
-);
+)
+ORDER BY ageGroup ASC
+;

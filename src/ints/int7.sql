@@ -23,4 +23,5 @@ FROM (
             WHERE specialty NOT NULL
         ) USING(healthProfessional)
     ) GROUP BY specialty, type
-) GROUP BY specialty;
+) GROUP BY specialty
+ORDER BY total DESC, type ASC, specialty ASC;

@@ -4,7 +4,7 @@
 
 -- What is the average salary per health professional specialty?
 
-SELECT avg(baseSalary + extraSalary) AS avgSalary, Specialty 
+SELECT Specialty,  avg(baseSalary + extraSalary) AS avgSalary
 FROM (
     SELECT healthProfessionalCC AS cc, Specialty 
     FROM Doctor 
@@ -15,4 +15,5 @@ FROM (
     WHERE Specialty NOT NULL
     ) 
 JOIN HealthProfessional USING (cc) 
-GROUP BY Specialty;
+GROUP BY Specialty
+ORDER BY avgSalary DESC, Specialty ASC;

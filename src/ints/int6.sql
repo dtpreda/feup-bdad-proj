@@ -15,7 +15,7 @@ JOIN Ocurrence ON (Participated.ocurrence = Ocurrence.id)
 JOIN Person ON (Ocurrence.patient = Person.cc);
 
 
-SELECT doctorCC 
+SELECT doctorCC
 FROM DoctorParticipated DP1
 WHERE (
     SELECT count(DISTINCT DP2.personCC) AS count1
