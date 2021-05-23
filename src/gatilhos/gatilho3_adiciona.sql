@@ -11,5 +11,5 @@ WHEN
         WHERE Ocurrence.id=NEW.ocurrence
     )
 BEGIN
-    SELECT RAISE(ROLLBACK, 'A person cannot participate as a health professional in an occurrence where it is a patient.');
+    SELECT RAISE(ABORT, 'A person cannot participate as a health professional in an occurrence where it is a patient.');
 END;
