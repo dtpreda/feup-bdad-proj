@@ -28,7 +28,7 @@ UNION
 
 SELECT 0 as ratio, hospitalName 
 FROM (
-    SELECT 0 AS internCount, name AS hospitalName
+    SELECT name AS hospitalName
     FROM Hospital
     GROUP BY hospitalName
 )
